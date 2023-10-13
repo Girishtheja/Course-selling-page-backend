@@ -1,7 +1,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
+app.use(cors())
 require('dotenv').config(); // Load variables from .env file
 
 const databaseURL = process.env.DATABASE_URL;
