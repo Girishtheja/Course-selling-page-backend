@@ -56,6 +56,12 @@ const authenticateJwt = (req, res, next) => {
 
 mongoose.connect(databaseURL, { useNewUrlParser: true, useUnifiedTopology: true, dbName: "courses" });
 
+app.get('/admin/profile', authenticateJwt, (req, res) => {
+    res.json({
+        username: req.user.username,
+    })
+})
+
 app.post('/admin/signup', (req, res) => {
     const { username, password } = req.body;
     Admin.findOne({ username }).then(callback);
